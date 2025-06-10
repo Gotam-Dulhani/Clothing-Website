@@ -1,0 +1,134 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background: #B6D0E2;;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+	text-align:center;
+   
+}
+
+.form-container {
+    background: #fff;
+    border-radius: 90px;
+     padding: 10px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    color: #333;
+  }
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+   
+    border-radius: 5px;
+    
+}
+
+button:hover {
+    background-color: #555;
+}
+
+
+
+.footer{
+  background-color:rgb(162, 162, 28);
+  position: absolute;
+  text-align: right;
+  top: 700px;
+  width: 1350px;
+  height: 250px;
+  display: flex;
+  color: white;
+}
+
+
+.social a:nth-child(1){
+  position: absolute;
+right: 0px;
+  display: inline-flex;
+  height: 100px;
+width: 100px;
+align-items: center;
+justify-content: center;
+background-color: rgb(27, 27, 28);
+margin: 10px;
+box-shadow: 0 10px rgb(72, 7, 119);
+border-radius: 50%;
+color:white;
+}
+.social a:nth-child(2){
+  position: absolute;
+right: 100px;
+  display: inline-flex;
+  height: 100px;
+width: 100px;
+align-items: center;
+justify-content: center;
+background-color: rgb(26, 26, 27);
+margin: 10px;
+box-shadow: 0 10px rgb(72, 7, 119);
+border-radius: 50%;
+color:white;
+
+}
+.social a:nth-child(3){
+  position: absolute;
+right: 200px;
+  display: inline-flex;
+  height: 100px;
+width: 100px;
+align-items: center;
+justify-content: center;
+background-color: rgb(26, 26, 27);
+margin: 10px;
+box-shadow: 0 10px rgb(72, 7, 119);
+border-radius: 50%;
+color:white;
+}
+.social a:nth-child(4){
+  position: absolute;
+right: 300px;
+  display: inline-flex;
+  height: 100px;
+width: 100px;
+align-items: center;
+justify-content: center;
+background-color: rgb(26, 26, 27);
+margin: 10px;
+box-shadow: 0 10px rgb(72, 7, 119);
+border-radius: 50%;
+color:white;
+}
+.footer img:nth-child(1){
+  position: absolute;
+  left: px;
+}
+.footer img:nth-child(2){
+  position: absolute;
+  left:450px;
+}
