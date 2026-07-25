@@ -1,81 +1,263 @@
 <!DOCTYPE html>
-<html>
-<head >
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, intial-scale=1">
-	<title> DETAILS ABOUT YOUR GROCERY....</title>
-	<link rel="stylesheet" type="text/css" href="payment.css">
-	
-
- </head>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - QaumiQuotient</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        .checkout-layout {
+            display: grid; grid-template-columns: 1fr 420px; gap: 2.5rem;
+            align-items: start;
+        }
+        .checkout-section {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem; margin-bottom: 1.5rem;
+        }
+        .checkout-section h3 {
+            font-family: var(--font-heading); font-size: 1.3rem;
+            margin-bottom: 1.5rem; padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .form-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+        }
+        .payment-methods {
+            display: flex; gap: 0.75rem; margin-bottom: 1.5rem;
+        }
+        .payment-method {
+            flex: 1; padding: 1rem; border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm); text-align: center;
+            cursor: pointer; transition: all var(--transition);
+            background: var(--bg);
+        }
+        .payment-method:hover, .payment-method.active {
+            border-color: var(--accent); background: #fdf0ed;
+        }
+        .payment-method-icon { font-size: 1.5rem; margin-bottom: 0.35rem; }
+        .payment-method-label { font-size: 0.8rem; font-weight: 600; }
+        .order-sidebar {
+            position: sticky; top: 90px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem;
+        }
+        .order-sidebar h3 {
+            font-family: var(--font-heading); font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+        .order-item {
+            display: flex; gap: 1rem; padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .order-item:last-of-type { border: none; }
+        .order-item-img {
+            width: 60px; height: 60px; border-radius: var(--radius-sm);
+            object-fit: cover;
+        }
+        .order-item-name { font-size: 0.9rem; font-weight: 500; }
+        .order-item-qty { font-size: 0.8rem; color: var(--text-muted); }
+        .order-item-price { font-size: 0.9rem; font-weight: 600; margin-left: auto; }
+        .order-row {
+            display: flex; justify-content: space-between;
+            padding: 0.65rem 0; font-size: 0.9rem;
+        }
+        .order-row.total {
+            border-top: 2px solid var(--border); margin-top: 0.5rem;
+            padding-top: 1rem; font-weight: 700; font-size: 1.1rem;
+        }
+        .order-row.total span:last-child { color: var(--accent); }
+        .secure-note {
+            display: flex; align-items: center; gap: 0.5rem;
+            margin-top: 1.25rem; padding: 0.85rem;
+            background: #f0f7f0; border-radius: var(--radius-sm);
+            font-size: 0.8rem; color: #2e7d32; text-align: center;
+            justify-content: center;
+        }
+        .card-icons { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .card-icons span {
+            padding: 0.3rem 0.6rem; border: 1px solid var(--border);
+            border-radius: 4px; font-size: 0.7rem; font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .checkout-layout { grid-template-columns: 1fr; }
+            .order-sidebar { position: static; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
 <body>
 
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="logo"><img src="FAST5.jpg" alt="QaumiQuotient"></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Products</a></li>
+                <li><a href="sellers.html">Top Sellers</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="payment.html">Checkout</a></li>
+                <li><a href="login.html" class="btn btn-primary btn-sm">Login</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<header>
-	<div class="container">
-	<div class="left">
-	<h3>BILLING ADDRESS</h3>
-	<form>
-	Full name
-	<input type="text" name="" placeholder="Enter your name">
-	Email
- 	<input type="text" name="" placeholder="Enter your email">
-	Address
-	<input type="text" name="" placeholder="Enter your address">
-	City
-	<input type="text" name="" placeholder="Enter your city"> 
-	<div id="city">
-	<lable>
-	State	
-	<select>
-	<option>Choose your Province</option>
-	<option>Punjab</option>
-	<option>KPK</option>
-	<option>Sindh</option>
-	<option>Gilgit</option>
-	<option>Kashmir</option>
-	</select>
-	</label>
-	</div>
-	<br>
-	<image src="fast1.png" width="300" height="100">
-	</form>
-	</div>
-        <div class="right">
-	<h3>PAYMENTS</h3>
-	<form>
-	ACCEPTED CARD ONLY VISA
-	<br>
-	
-	CARD NUMBER OR IBN
- 	<input type="text" name="" placeholder="enter card number">
-	EXPIRY MONTH
-	<input type="text" name="" placeholder="enter month">
-	 
-	<div id="city">
-	<lable>
-	DATE	
-	<select>
-	<option>Choose date..</option>
-	<option>2022</option>
-	<option>2024</option>
-	<option>2025</option>
-	<option>2026</option>
-	</select>
-	</label>
-	<lable>
-		<br>
-		<br>
-	CVV
-	<input type="number" name="" placeholder="cvv">
-	</label>
-	</div>
-	</form>
-	<a href="index.html">PROCEED TO CHECKOUT</a>
-	</div>
-	</div>
-</header>
+    <div class="section" style="padding-top: 3rem;">
+        <div class="section-header" style="text-align: left;">
+            <h2>Checkout</h2>
+            <p>Complete your order by filling in the details below.</p>
+        </div>
 
+        <div class="checkout-layout">
+            <div>
+                <div class="checkout-section">
+                    <h3>Billing Address</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input class="form-control" type="text" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" type="email" placeholder="you@example.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input class="form-control" type="text" placeholder="Street address">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input class="form-control" type="text" placeholder="Enter your city">
+                        </div>
+                        <div class="form-group">
+                            <label>Province</label>
+                            <select class="form-control">
+                                <option value="">Select province</option>
+                                <option>Punjab</option>
+                                <option>KPK</option>
+                                <option>Sindh</option>
+                                <option>Balochistan</option>
+                                <option>Gilgit-Baltistan</option>
+                                <option>Azad Kashmir</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input class="form-control" type="tel" placeholder="03XX XXX XXXX">
+                    </div>
+                </div>
+
+                <div class="checkout-section">
+                    <h3>Payment Method</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method active" onclick="selectPayment(this)">
+                            <div class="payment-method-icon">&#128179;</div>
+                            <div class="payment-method-label">Credit Card</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(this)">
+                            <div class="payment-method-icon">&#128177;</div>
+                            <div class="payment-method-label">Debit Card</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(this)">
+                            <div class="payment-method-icon">&#128241;</div>
+                            <div class="payment-method-label">Easypaisa</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment(this)">
+                            <div class="payment-method-icon">&#128176;</div>
+                            <div class="payment-method-label">COD</div>
+                        </div>
+                    </div>
+                    <div class="card-icons">
+                        <span>VISA</span>
+                        <span>Mastercard</span>
+                        <span>PayPal</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input class="form-control" type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input class="form-control" type="text" placeholder="MM / YY" maxlength="7">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input class="form-control" type="password" placeholder="***" maxlength="4">
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.html" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                    Place Order &mdash; Rs. 6,300
+                </a>
+            </div>
+
+            <div class="order-sidebar">
+                <h3>Order Summary</h3>
+                <div class="order-item">
+                    <img class="order-item-img" src="1.jpg" alt="Shawl">
+                    <div>
+                        <div class="order-item-name">Shawl</div>
+                        <div class="order-item-qty">Qty: 2</div>
+                    </div>
+                    <span class="order-item-price">Rs. 3,100</span>
+                </div>
+                <div class="order-item">
+                    <img class="order-item-img" src="2.jpg" alt="Hoodie">
+                    <div>
+                        <div class="order-item-name">Hoodie</div>
+                        <div class="order-item-qty">Qty: 1</div>
+                    </div>
+                    <span class="order-item-price">Rs. 1,200</span>
+                </div>
+                <div class="order-item">
+                    <img class="order-item-img" src="3.jpg" alt="Western Tops">
+                    <div>
+                        <div class="order-item-name">Western Tops</div>
+                        <div class="order-item-qty">Qty: 1</div>
+                    </div>
+                    <span class="order-item-price">Rs. 2,000</span>
+                </div>
+                <div class="order-row">
+                    <span>Subtotal</span>
+                    <span>Rs. 6,300</span>
+                </div>
+                <div class="order-row">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <div class="order-row">
+                    <span>Tax</span>
+                    <span>Rs. 0</span>
+                </div>
+                <div class="order-row total">
+                    <span>Total</span>
+                    <span>Rs. 6,300</span>
+                </div>
+                <div class="secure-note">
+                    &#128274; Secure checkout. Your data is encrypted.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" style="margin-top: auto;">
+        <div class="footer-bottom" style="border: none; margin: 0; padding: 1.5rem;">
+            &copy; 2026 QaumiQuotient. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
+    <script>
+        function selectPayment(el) {
+            document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
 </body>
 </html>

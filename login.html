@@ -3,40 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QaumiQuotient - Login and Signup</title>
-    <link rel="stylesheet" type="text/css" href="login.css">
-
-
-    
+    <title>Login - QaumiQuotient</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        .auth-wrapper {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            padding: 3rem 1rem;
+        }
+        .auth-card {
+            width: 100%; max-width: 440px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+        }
+        .auth-header {
+            text-align: center; margin-bottom: 2rem;
+        }
+        .auth-header .logo-text {
+            font-family: var(--font-heading); font-size: 1.6rem;
+            font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .auth-header p {
+            color: var(--text-muted); font-size: 0.9rem;
+        }
+        .auth-tabs {
+            display: flex; margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .auth-tab {
+            flex: 1; padding: 0.85rem; text-align: center;
+            font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
+            background: none; border: none; border-bottom: 2px solid transparent;
+            margin-bottom: -2px; transition: all var(--transition); cursor: pointer;
+        }
+        .auth-tab.active {
+            color: var(--accent); border-bottom-color: var(--accent);
+        }
+        .auth-tab:hover { color: var(--text); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+        .auth-form .btn { width: 100%; margin-top: 0.5rem; }
+        .auth-divider {
+            display: flex; align-items: center; gap: 1rem;
+            margin: 1.5rem 0; color: var(--text-muted); font-size: 0.85rem;
+        }
+        .auth-divider::before, .auth-divider::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+        .auth-footer {
+            text-align: center; margin-top: 1.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+        }
+        .auth-footer a { color: var(--accent); font-weight: 500; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="form-container">
-            <form class="signup-form">
-                <h2>Create an Account On QaumiQuotient</h2>
-                <input name="username" placeholder="Username" required>
-                <input name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-             <a href="index.html">   <button type="button">Sign Up</button> </a>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="logo"><img src="FAST5.jpg" alt="QaumiQuotient"></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Products</a></li>
+                <li><a href="sellers.html">Top Sellers</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="payment.html">Checkout</a></li>
+                <li><a href="login.html" class="btn btn-primary btn-sm">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo-text">Welcome Back</div>
+                <p>Sign in to your account or create a new one.</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchTab('login')">Sign In</button>
+                <button class="auth-tab" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <form class="auth-form active" id="login-form">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input class="form-control" type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" type="password" placeholder="Enter your password" required>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+                        <input type="checkbox" style="accent-color: var(--accent);"> Remember me
+                    </label>
+                    <a href="#" style="font-size: 0.85rem; color: var(--accent);">Forgot password?</a>
+                </div>
+                <a href="index.html" class="btn btn-primary">Sign In</a>
             </form>
 
-            <form class="login-form">
-                <h2>For Login</h2>
-                <input  name="email" placeholder="Email" required>
-                <input  type="password" name="password" placeholder="Password" required>
-             <a href="index.html">   <button type="button">Login</button> </a>
+            <form class="auth-form" id="signup-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input class="form-control" type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input class="form-control" type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" type="password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input class="form-control" type="password" placeholder="Confirm your password" required>
+                </div>
+                <a href="index.html" class="btn btn-primary">Create Account</a>
             </form>
+
+            <div class="auth-footer">
+                <p>By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            </div>
         </div>
     </div>
-<section class="footer">
-        <img class="logo" src="FAST5.jpg" alt="Logo" style="height: 250px; width: 200px;">
-        <img src="fast8.webp" alt="Newsletter" style="width: 400px; height: 250px;">
-        <div class="social">
-            <a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Abdul Saboor <i class="fab fa-facebook"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Gotam <i class="fab fa-facebook"></i></a>
-        </div>
-    </section>
 
-    
+    <footer class="footer">
+        <div class="footer-bottom" style="border: none; margin: 0; padding: 1.5rem;">
+            &copy; 2026 QaumiQuotient. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            if (tab === 'login') {
+                document.querySelectorAll('.auth-tab')[0].classList.add('active');
+                document.getElementById('login-form').classList.add('active');
+            } else {
+                document.querySelectorAll('.auth-tab')[1].classList.add('active');
+                document.getElementById('signup-form').classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>

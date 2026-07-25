@@ -1,81 +1,208 @@
 <!DOCTYPE html>
-<html long="en">
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>YOUR CHOOSEN ITEMS</title>
-	 <!--
-    Add css file named style3and also attatch website of some logo etc facebook
-    -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="style3.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - QaumiQuotient</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .cart-layout {
+            display: grid; grid-template-columns: 1fr 380px; gap: 2.5rem;
+            align-items: start;
+        }
+        .cart-item {
+            display: flex; gap: 1.5rem; padding: 1.5rem;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); margin-bottom: 1rem;
+            transition: box-shadow var(--transition);
+        }
+        .cart-item:hover { box-shadow: var(--shadow-md); }
+        .cart-item-img {
+            width: 130px; height: 130px; border-radius: var(--radius-sm);
+            object-fit: cover; flex-shrink: 0;
+        }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .cart-item-price { color: var(--accent); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.75rem; }
+        .cart-item-controls {
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .qty-input {
+            width: 60px; padding: 0.5rem; text-align: center;
+            border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+            font-size: 0.95rem; outline: none;
+        }
+        .qty-input:focus { border-color: var(--accent); }
+        .cart-item-remove {
+            background: none; color: var(--text-muted); font-size: 0.8rem;
+            transition: color var(--transition);
+        }
+        .cart-item-remove:hover { color: #d32f2f; }
+        .cart-empty {
+            text-align: center; padding: 4rem 2rem; color: var(--text-muted);
+        }
+        .cart-empty h2 {
+            font-family: var(--font-heading); font-size: 1.8rem;
+            margin-bottom: 0.75rem; color: var(--text);
+        }
+        .summary-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem;
+            position: sticky; top: 90px;
+        }
+        .summary-card h3 {
+            font-family: var(--font-heading); font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+        .summary-row {
+            display: flex; justify-content: space-between;
+            padding: 0.75rem 0; font-size: 0.95rem;
+        }
+        .summary-row.total {
+            border-top: 2px solid var(--border); margin-top: 0.5rem;
+            padding-top: 1rem; font-weight: 700; font-size: 1.15rem;
+        }
+        .summary-row.total span:last-child { color: var(--accent); }
+        .summary-card .btn { width: 100%; margin-top: 1.5rem; }
+        .summary-note {
+            margin-top: 1rem; padding: 1rem; background: #fdf0ed;
+            border-radius: var(--radius-sm); font-size: 0.85rem;
+            color: var(--text-muted); text-align: center;
+        }
+        @media (max-width: 768px) {
+            .cart-layout { grid-template-columns: 1fr; }
+            .summary-card { position: static; }
+            .cart-item { flex-direction: column; }
+            .cart-item-img { width: 100%; height: 200px; }
+        }
+    </style>
 </head>
 <body>
-	<!--dic of class wrapper in which there are different div and photo of products and price is givenS-->
-	<div class="wrapper">
-		<h1>THESE ARE YOUR CHOOSEN ITEMS</h1>
-		<div class="project">
-			<div class="shop">
-				<div class="box">
-					<img src="1.jpg" alt="" hspace="30">
-					<div class="content">
-						<h3>Shawl</h3>
-						<h4>TOTAL Price: 1550rs</h4>
-						<p class="unit">Quantity: <input value="2"></p>
-						
-							
-							
-							<br>
-						</p>
-					</div>
-				</div>
-				<div class="box">
-					<br>
-					<img src="2.jpg" alt="" hspace="30" align="left">
-					<div class="content">
-						<h3>Hoddie</h3>
-						<h4>Price: 1200rs</h4>
-						<p class="unit">Quantity: <input value="1"></p>
-						
-							
-							
-							<br>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="box">
-					<img src="3.jpg" alt="" hspace="30" align="right">
-					<div class="content">
-						<h3>Western Tops<br> for Woman</h3>
-						<h4>Price: 2000rs</h4>
-						<p class="unit">Quantity: <input value="1"></p>
-						
-							
-							
-				
-						</p>
-					</div>
-				</div>
-			</div>
-				<div class="right-bar">
-					<!--Used inline container called span-->
-					<p><span>Maxtotal</span> <span>400Rs</span></p>
-					<hr>
-					<p><span>Tax (0%)</span> <span>0Rs</span></p>
-					<hr>
-					<p><span>Shipping</span> <span>0Rs</span></p>
-					<hr>
-					<p><span>Total</span> <span>400Rs</span></p>
 
-                   <!--add attatchment of payment page-->
-					<a href="payment.html">PAYMENT</a>
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="logo"><img src="FAST5.jpg" alt="QaumiQuotient"></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Products</a></li>
+                <li><a href="sellers.html">Top Sellers</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="payment.html">Checkout</a></li>
+                <li><a href="login.html" class="btn btn-primary btn-sm">Login</a></li>
+            </ul>
+        </div>
+    </nav>
 
-					<hr>
-				</div>
-			</div>
-		</div>
-	</body>
+    <div class="section">
+        <div class="section-header" style="text-align: left;">
+            <h2>Shopping Cart</h2>
+            <p>Review your selected items before checkout.</p>
+        </div>
 
+        <div class="cart-layout">
+            <div class="cart-items">
+                <div class="cart-item">
+                    <img class="cart-item-img" src="1.jpg" alt="Shawl">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">Shawl</div>
+                        <div class="cart-item-price">Rs. 1,550</div>
+                        <div class="cart-item-controls">
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">Qty:</label>
+                            <input class="qty-input" type="number" value="2" min="1">
+                            <button class="cart-item-remove">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <img class="cart-item-img" src="2.jpg" alt="Hoodie">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">Hoodie</div>
+                        <div class="cart-item-price">Rs. 1,200</div>
+                        <div class="cart-item-controls">
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">Qty:</label>
+                            <input class="qty-input" type="number" value="1" min="1">
+                            <button class="cart-item-remove">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <img class="cart-item-img" src="3.jpg" alt="Western Tops">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">Western Tops for Women</div>
+                        <div class="cart-item-price">Rs. 2,000</div>
+                        <div class="cart-item-controls">
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">Qty:</label>
+                            <input class="qty-input" type="number" value="1" min="1">
+                            <button class="cart-item-remove">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</head>
+            <div class="summary-card">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>Rs. 6,300</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (0%)</span>
+                    <span>Rs. 0</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span>Rs. 6,300</span>
+                </div>
+                <a href="payment.html" class="btn btn-primary">Proceed to Checkout</a>
+                <a href="categories.html" class="btn btn-outline" style="margin-top: 0.75rem;">Continue Shopping</a>
+                <div class="summary-note">Free shipping on all orders over Rs. 2,000</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo">QaumiQuotient</div>
+                <p>Your destination for quality clothing and products that celebrate identity and culture.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="categories.html">All Products</a></li>
+                    <li><a href="sellers.html">Top Sellers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="payment.html">Checkout</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="https://instagram.com/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Abdul Saboor</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Gotam</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 QaumiQuotient. All rights reserved.</div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
+</body>
 </html>

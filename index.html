@@ -1,57 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>QaumiQuotient</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QaumiQuotient - Where Fashion Meets Identity</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .hero { margin-top: 0; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .feature { text-align: center; padding: 2.5rem 1.5rem; }
+        .feature-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: #fdf0ed; color: var(--accent);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem; font-size: 1.5rem;
+        }
+        .feature h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .feature p { color: var(--text-muted); font-size: 0.9rem; }
+        .featured-products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .featured-products .card-body { display: flex; align-items: center; justify-content: space-between; }
+        .cta-banner {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+            align-items: center; background: #1a1a1a; border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .cta-img { width: 100%; height: 420px; object-fit: cover; }
+        .cta-text { padding: 3rem; color: #fff; }
+        .cta-text h2 { font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 1rem; }
+        .cta-text p { color: #aaa; margin-bottom: 2rem; line-height: 1.7; }
+        .newsletter { text-align: center; }
+        .newsletter-form {
+            display: flex; gap: 0.75rem; max-width: 460px; margin: 1.5rem auto 0;
+        }
+        .newsletter-form input {
+            flex: 1; padding: 0.85rem 1.25rem; border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm); font-size: 0.95rem; outline: none;
+        }
+        .newsletter-form input:focus { border-color: var(--accent); }
+        @media (max-width: 768px) {
+            .features { grid-template-columns: 1fr; }
+            .featured-products { grid-template-columns: repeat(2, 1fr); }
+            .cta-banner { grid-template-columns: 1fr; }
+            .cta-img { height: 260px; }
+            .newsletter-form { flex-direction: column; }
+        }
+        @media (max-width: 480px) {
+            .featured-products { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <div class="navbar">
-            <ul>
-                <img class="logo" src="FAST5.jpg" alt="Logo">
-                <li><a href="login.html">LOGIN PAGE</a></li>
-               
-                <li><a href="categories.html">PRODUCTS</a></li>
-                <li><a href="https://instagram.com/">CONTACT</a></li>
-                <li><a href="cart.html">MY CART</a></li>
-                <li><a href="sellers.html">TOP SELLER</a></li>
-		<li><a href="payment.html">PAYMENT</a></li>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="logo"><img src="FAST5.jpg" alt="QaumiQuotient"></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Products</a></li>
+                <li><a href="sellers.html">Top Sellers</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="payment.html">Checkout</a></li>
+                <li><a href="login.html" class="btn btn-primary btn-sm">Login</a></li>
             </ul>
         </div>
-    </header>
+    </nav>
 
-    <div class="header">
-        <img src="fast.jpg" alt="MainPicture" style="width: 1100px; height: 350px;">
-    </div>
-
-
-    <div class="box">
-        <img src="fast7.jpg" alt="LOGO" style="height: 500px; width: 500px">
-    </div>
-
-    <div class="box2">
-        <a href="sellers.html"><img src="fast81.jpg" alt="LOGO" style="height: 500px; width: 500px"></a>
-    </div>
-
-    <!-- New welcome text added here -->
-    <div class="welcome-text">
-
-
-        <p>Welcome to QaumiQuotient – Where Fashion Meets Identity.</p>
-<hr>
-
-    </div>
-
-    <section class="footer">
-        <img class="logo" src="FAST5.jpg" alt="Logo" style="height: 250px; width: 200px;">
-        <img src="fast8.webp" alt="Newsletter" style="width: 400px; height: 250px;">
-        <div class="social">
-            <a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Abdul Saboor <i class="fab fa-facebook"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Gotam <i class="fab fa-facebook"></i></a>
+    <section class="hero">
+        <img class="hero-img" src="fast.jpg" alt="Fashion Collection">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <span class="badge">New Collection 2026</span>
+                <h1>Where Fashion Meets Identity</h1>
+                <p>Discover handpicked clothing and products that celebrate culture, quality, and timeless style.</p>
+                <a href="categories.html" class="btn btn-primary">Shop Now</a>
+            </div>
         </div>
     </section>
 
+    <div class="section">
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">&#128722;</div>
+                <h3>Free Shipping</h3>
+                <p>Free delivery on all orders over Rs. 2000 across Pakistan.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#128737;</div>
+                <h3>Secure Payment</h3>
+                <p>100% secure payment methods. Your data is safe with us.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#8634;</div>
+                <h3>Easy Returns</h3>
+                <p>Not satisfied? Return within 7 days for a full refund.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="padding-top: 0;">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <p>Our most popular picks, curated just for you.</p>
+        </div>
+        <div class="featured-products">
+            <a href="categories.html" class="card">
+                <img class="card-img" src="fast14.jpg" alt="Hoodie">
+                <div class="card-body">
+                    <span class="card-title">Premium Hoodie</span>
+                    <span class="card-price">Rs. 1,800</span>
+                </div>
+            </a>
+            <a href="categories.html" class="card">
+                <img class="card-img" src="fast18.jpg" alt="Denim Jacket">
+                <div class="card-body">
+                    <span class="card-title">Denim Jacket</span>
+                    <span class="card-price">Rs. 2,500</span>
+                </div>
+            </a>
+            <a href="categories.html" class="card">
+                <img class="card-img" src="fast15.jpg" alt="Jacket">
+                <div class="card-body">
+                    <span class="card-title">Winter Jacket</span>
+                    <span class="card-price">Rs. 3,200</span>
+                </div>
+            </a>
+            <a href="categories.html" class="card">
+                <img class="card-img" src="fast16.jpg" alt="Ajrak">
+                <div class="card-body">
+                    <span class="card-title">Traditional Ajrak</span>
+                    <span class="card-price">Rs. 1,500</span>
+                </div>
+            </a>
+        </div>
+        <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="categories.html" class="btn btn-outline">View All Products</a>
+        </div>
+    </div>
+
+    <div class="section" style="padding-top: 0;">
+        <div class="cta-banner">
+            <img class="cta-img" src="fast81.jpg" alt="Top Sellers">
+            <div class="cta-text">
+                <span class="badge" style="background: #fff; color: var(--accent);">Featured Seller</span>
+                <h2>Meet Our Top Sellers</h2>
+                <p>Explore products from our most trusted sellers. Quality you can count on, delivered right to your doorstep.</p>
+                <a href="sellers.html" class="btn btn-primary">Explore Sellers</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section newsletter">
+        <div class="section-header">
+            <h2>Stay in the Loop</h2>
+            <p>Subscribe for exclusive offers, new arrivals, and style inspiration.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo">QaumiQuotient</div>
+                <p>Your destination for quality clothing and products that celebrate identity and culture.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="categories.html">All Products</a></li>
+                    <li><a href="categories.html">Clothing</a></li>
+                    <li><a href="categories.html">Accessories</a></li>
+                    <li><a href="sellers.html">Top Sellers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="login.html">Sign Up</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="payment.html">Checkout</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="https://instagram.com/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Abdul Saboor</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Gotam</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 QaumiQuotient. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,68 +1,227 @@
 <!DOCTYPE html>
-<html>
-    <head>
-         <!--
-    Add css file named sellers.css and also attatch website of some logo etc facebook
-    -->
-        <title>TOP SELLERS</title>
-        <link rel="stylesheet" type="text/css" href="sellers.css">
-        <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-        <!--MAKE MAVIGATION BAR IN THE HAEADER AND aslo add image in header class-->
-        <nav>
-            <ul>
-                <a href="index.html"><li>HOME</li></a>
-                <a href="cart.html"><li>CART</li></a>
-                <a href="categories.html"><li>PRODUCTS</li></a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Sellers - QaumiQuotient</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .sellers-hero {
+            height: 280px; overflow: hidden; position: relative;
+        }
+        .sellers-hero img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .sellers-hero-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .sellers-hero h1 {
+            font-family: var(--font-heading); font-size: 3rem; color: #fff;
+        }
+        .seller-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+        }
+        .seller-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); overflow: hidden;
+            transition: all var(--transition);
+        }
+        .seller-card:hover {
+            box-shadow: var(--shadow-lg); transform: translateY(-4px);
+        }
+        .seller-card-img {
+            width: 100%; height: 280px; object-fit: cover;
+        }
+        .seller-card-body {
+            padding: 1.5rem 1.75rem 1.75rem;
+        }
+        .seller-card-body h3 {
+            font-family: var(--font-heading); font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        .seller-card-body p {
+            color: var(--text-muted); font-size: 0.9rem;
+            margin-bottom: 1.25rem; line-height: 1.6;
+        }
+        .seller-stats {
+            display: flex; gap: 1.5rem; margin-bottom: 1.25rem;
+        }
+        .seller-stat {
+            font-size: 0.8rem; color: var(--text-muted);
+        }
+        .seller-stat strong {
+            color: var(--text); font-size: 1rem; display: block;
+        }
+        @media (max-width: 768px) {
+            .seller-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="logo"><img src="FAST5.jpg" alt="QaumiQuotient"></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Products</a></li>
+                <li><a href="sellers.html">Top Sellers</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="payment.html">Checkout</a></li>
+                <li><a href="login.html" class="btn btn-primary btn-sm">Login</a></li>
             </ul>
-        </nav>
-        <body>
-            <img src="fast90.jpg" style="height:300px;width:1350px;" >
-                <h1 align="center">TOP SELLERS</h1>
-       <section class="items">
-        <div class="item">
-            <img style="width: auto;height: 200px;object-fit: cover;cursor: pointer;transition: 0.2s ease;width: 20rem;margin:.5rem 0; position: absolute; left: 100px;" src="fast10.jpg">
-            <h4 style="position: absolute; top: 680px; left: 100px;"> From Grandpa's Orchard</h4>
-            <button style="position: absolute; top: 770px; left: 100px; font-size: x-large;">Add to cart </button>
         </div>
-        <div class="item">
-            <img style="width: auto;height: 200px;object-fit: cover;cursor: pointer;transition: 0.2s ease;width: 20rem;margin:.5rem 0; position: absolute; right: 100px;" src="fast79.jpg">
-            <h4 style="position: absolute; top: 680px; right: 100px;">Carrot King</h4>
-            <button style="position: absolute; top: 770px; right: 100px; font-size: x-large;">Add to cart </button>
+    </nav>
+
+    <div class="sellers-hero">
+        <img src="fast90.jpg" alt="Top Sellers">
+        <div class="sellers-hero-overlay">
+            <h1>Top Sellers</h1>
         </div>
-        <div class="item">
-            <img style="width: auto;height: 200px;object-fit: cover;cursor: pointer;transition: 0.2s ease;width: 20rem;margin:.5rem 0; position: absolute; left: 100px; top: 975px;" src="fast66.jpg">
-            <h4 style="position: absolute; top: 1225px; left: 100px;"> Nestle</h4>
-            <button style="position: absolute; top: 1325px; left: 100px; font-size: x-large;">Add to cart </button>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <h2>Our Trusted Sellers</h2>
+            <p>Shop with confidence from our most reliable and top-rated sellers.</p>
         </div>
-        <div class="item">
-            <img style="width: auto;height: 200px;object-fit: cover;cursor: pointer;transition: 0.2s ease;width: 20rem;margin:.5rem 0; position: absolute; right: 100px; top: 975px;" src="fast12.jpg">
-            <h4 style="position: absolute; top: 1225px; right: 100px;"> Dawn </h4>
-            <button style="position: absolute; top: 1325px; right: 100px; font-size: x-large;">Add to cart </button>
+
+        <div class="seller-grid">
+            <div class="seller-card">
+                <img class="seller-card-img" src="fast10.jpg" alt="From Grandpa's Orchard">
+                <div class="seller-card-body">
+                    <h3>From Grandpa's Orchard</h3>
+                    <p>Fresh, organic fruits straight from traditional orchards. Quality you can taste in every bite.</p>
+                    <div class="seller-stats">
+                        <div class="seller-stat">
+                            <strong>4.9</strong>
+                            Rating
+                        </div>
+                        <div class="seller-stat">
+                            <strong>250+</strong>
+                            Products
+                        </div>
+                        <div class="seller-stat">
+                            <strong>1.2k</strong>
+                            Orders
+                        </div>
+                    </div>
+                    <a href="categories.html" class="btn btn-outline btn-sm">View Products</a>
+                </div>
+            </div>
+
+            <div class="seller-card">
+                <img class="seller-card-img" src="fast79.jpg" alt="Carrot King">
+                <div class="seller-card-body">
+                    <h3>Carrot King</h3>
+                    <p>Premium vegetables and root crops, sourced fresh daily from local farms across Pakistan.</p>
+                    <div class="seller-stats">
+                        <div class="seller-stat">
+                            <strong>4.8</strong>
+                            Rating
+                        </div>
+                        <div class="seller-stat">
+                            <strong>180+</strong>
+                            Products
+                        </div>
+                        <div class="seller-stat">
+                            <strong>950</strong>
+                            Orders
+                        </div>
+                    </div>
+                    <a href="categories.html" class="btn btn-outline btn-sm">View Products</a>
+                </div>
+            </div>
+
+            <div class="seller-card">
+                <img class="seller-card-img" src="fast66.jpg" alt="Nestle">
+                <div class="seller-card-body">
+                    <h3>Nestle</h3>
+                    <p>Trusted household brand offering dairy, beverages, and food products with guaranteed freshness.</p>
+                    <div class="seller-stats">
+                        <div class="seller-stat">
+                            <strong>4.7</strong>
+                            Rating
+                        </div>
+                        <div class="seller-stat">
+                            <strong>500+</strong>
+                            Products
+                        </div>
+                        <div class="seller-stat">
+                            <strong>3.5k</strong>
+                            Orders
+                        </div>
+                    </div>
+                    <a href="categories.html" class="btn btn-outline btn-sm">View Products</a>
+                </div>
+            </div>
+
+            <div class="seller-card">
+                <img class="seller-card-img" src="fast12.jpg" alt="Dawn">
+                <div class="seller-card-body">
+                    <h3>Dawn</h3>
+                    <p>Premium grocery and everyday essentials. Your one-stop shop for quality household products.</p>
+                    <div class="seller-stats">
+                        <div class="seller-stat">
+                            <strong>4.6</strong>
+                            Rating
+                        </div>
+                        <div class="seller-stat">
+                            <strong>320+</strong>
+                            Products
+                        </div>
+                        <div class="seller-stat">
+                            <strong>2.1k</strong>
+                            Orders
+                        </div>
+                    </div>
+                    <a href="categories.html" class="btn btn-outline btn-sm">View Products</a>
+                </div>
+            </div>
         </div>
-       </section>
-<!--ADD footer class in which there is logo of company and social comtact of group members-->
-        <section class="footer">
-            <img class="logo" src="FAST5.jpg" alt="Logo" style="height:250px ;width: 200px;">
-            <img src="fast8.webp" alt="Newsletter" style="width:400px;height: 250px";>
-            <div class="social">
-            <a
-            href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Gotam
-          <i class="fab fa-facebook"></i>
-            </a>
-          <a
-          href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Abdul Saboor
-            <i class="fab fa-facebook"></i>
-          </a>
-          
-             </div>
-          </section>
+    </div>
 
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo">QaumiQuotient</div>
+                <p>Your destination for quality clothing and products that celebrate identity and culture.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="categories.html">All Products</a></li>
+                    <li><a href="sellers.html">Top Sellers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="payment.html">Checkout</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="https://instagram.com/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Abdul Saboor</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Gotam</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 QaumiQuotient. All rights reserved.</div>
+    </footer>
 
-
-
-    </body>
-        
+    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
+</body>
 </html>
-    

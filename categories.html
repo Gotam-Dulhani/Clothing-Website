@@ -1,119 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Products</title>
-     <!--
-    Add css file named style2 and also attatch website of some logo etc facebook
-    -->
-    <link rel="stylesheet" type="text/css" href="style2.css">
-    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - QaumiQuotient</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .products-hero {
+            height: 280px; overflow: hidden; position: relative;
+        }
+        .products-hero img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .products-hero-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .products-hero h1 {
+            font-family: var(--font-heading); font-size: 3rem; color: #fff;
+        }
+        .filter-bar {
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;
+        }
+        .filter-tabs {
+            display: flex; gap: 0.5rem; flex-wrap: wrap;
+        }
+        .filter-tab {
+            padding: 0.55rem 1.25rem; border-radius: 100px;
+            border: 1.5px solid var(--border); background: var(--bg-card);
+            font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+            transition: all var(--transition); cursor: pointer;
+        }
+        .filter-tab:hover, .filter-tab.active {
+            background: var(--text); color: #fff; border-color: var(--text);
+        }
+        .product-count { color: var(--text-muted); font-size: 0.9rem; }
+        .product-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+        }
+        .product-card .card-img { aspect-ratio: 3/4; }
+        .product-card .card-body { padding: 1rem 1.25rem 1.25rem; }
+        .product-card .card-category {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--text-muted); margin-bottom: 0.35rem;
+        }
+        .product-card .btn { width: 100%; margin-top: 0.75rem; }
+        @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .product-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
-    <img src="fast8.jpg" alt="Categories" style="height:300px;width:1350px;" >
-        <h1>PRODUCTS</h1>
-         <!--MAKE MAVIGATION BAR -->
-      <header>
-<nav>
-    <ul>
-        <a href="index.html"><li>HOME</li></a>
-        <a href="cart.html"><li>CART</li></a>
-        <a href="sellers.html"><li>TOP SELLERS</li></a>
-    </ul>
-</nav>
-<!-- add section of items in which there are differnt items which are present in seperate div-->
-<section class="items">
-    <div class="item">
-        <img src="fast10.jpg">
-        <h4> Fruits </h4>
-        <!-- ADD button for add to cart-->
-      <a href="cart.html">  <button>Add to cart </button> </a>
-    </div>
-    <div class="item">
-        <img src="fast12.jpg">
-        <h4>Vegetables </h4>
-       <a href="cart.html">  <button>Add to cart </button> </a>
-    </div>
-    <div class="item">
-        <img src="fast14.jpg">
-        <h4> Hoodie </h4>
-       <a href="cart.html">  <button>Add to cart </button> </a>
-    </div>
-    <div class="item">
-        <img src="fast18.jpg">
-        <h4> Denim Jacket</h4>
-       <a href="cart.html">  <button>Add to cart </button> </a>
-    </div>
-    <div class="item">
-        <img src="fast9.webp">
-        <h4>White Shirt </h4>
-       <a href="cart.html">  <button>Add to cart </button> </a>
-    </div>
-    <div class="item">
-        <img src="fast25.jpg">
-        <h4> Pack of Three T-Shirts </h4>
-      <a href="cart.html">   <button>Add to cart </button> </a>
-    </div>
-    <div class="item">
-        <img src="fast15.jpg">
-        <h4> Jacket </h4>
-      <a href="cart.html">   <button>Add to cart </button></a>
-    </div>
-    <div class="item">
-        <img src="fast16.jpg">
-        <h4> Ajrak </h4>
-       <a href="cart.html">  <button>Add to cart </button> </a>
-    </div>
-    <div class="item">
-       <a href="cart.html">  <img src="fast17.jpg"> </a>
-        <h4> Eggs </h4>
-        <button>Add to cart </button>
-    </div>
-    <div class="item">
-      <a href="cart.html">   <img src="fast20.jpg"> </a>
-        <h4> Jeans </h4>
-        <button>Add to cart </button>
-    </div>
-    <div class="item">
-       <a href="cart.html">  <img src="fast21.jpg"> </a>
-        <h4> Dry fruits </h4>
-        <button>Add to cart </button>
-    </div>
-    <div class="item">
-       <a href="cart.html">  <img src="fast22.jpg"> </a>
-        <h4> Sauces </h4>
-        <button>Add to cart </button>
-    </div>
-    <div class="item">
-      <a href="cart.html">   <img src="fast23.jpg"> </a>
-        <h4> Candies </h4>
-        <button>Add to cart </button>
-    </div>
-    <div class="item">
-      <a href="cart.html">   <img src="fast24.jpg"> </a>
-        <h4> Biscuits </h4>
-        <button>Add to cart </button>
-    </div>
-    
-</section>
-<!--ADD footer class in which there is logo of company and social comtact of group members-->
-<section class="footer">
-    <img class="logo" src="FAST5.jpg" alt="Logo" style="height:250px ;width: 200px;">
-    <img src="fast8.webp" alt="Newsletter" style="width:400px;height: 250px";>
-    <div class="social">
-    <a
-    href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Gotam
-  <i class="fab fa-facebook"></i>
-    </a>
-  <a
-  href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Abdul Saboor
-    <i class="fab fa-facebook"></i>
-  </a>
-  
-     </div>
-  </section>
 
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="logo"><img src="FAST5.jpg" alt="QaumiQuotient"></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="categories.html">Products</a></li>
+                <li><a href="sellers.html">Top Sellers</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="payment.html">Checkout</a></li>
+                <li><a href="login.html" class="btn btn-primary btn-sm">Login</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <div class="products-hero">
+        <img src="fast8.jpg" alt="Products">
+        <div class="products-hero-overlay">
+            <h1>Our Products</h1>
+        </div>
+    </div>
 
+    <div class="section">
+        <div class="filter-bar">
+            <div class="filter-tabs">
+                <button class="filter-tab active">All</button>
+                <button class="filter-tab">Clothing</button>
+                <button class="filter-tab">Groceries</button>
+                <button class="filter-tab">Accessories</button>
+            </div>
+            <span class="product-count">14 products</span>
+        </div>
 
+        <div class="product-grid">
+            <div class="card product-card">
+                <img class="card-img" src="fast10.jpg" alt="Fruits">
+                <div class="card-body">
+                    <div class="card-category">Groceries</div>
+                    <div class="card-title">Fresh Fruits</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast12.jpg" alt="Vegetables">
+                <div class="card-body">
+                    <div class="card-category">Groceries</div>
+                    <div class="card-title">Vegetables</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast14.jpg" alt="Hoodie">
+                <div class="card-body">
+                    <div class="card-category">Clothing</div>
+                    <div class="card-title">Premium Hoodie</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast18.jpg" alt="Denim Jacket">
+                <div class="card-body">
+                    <div class="card-category">Clothing</div>
+                    <div class="card-title">Denim Jacket</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast9.webp" alt="White Shirt">
+                <div class="card-body">
+                    <div class="card-category">Clothing</div>
+                    <div class="card-title">White Shirt</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast25.jpg" alt="T-Shirts">
+                <div class="card-body">
+                    <div class="card-category">Clothing</div>
+                    <div class="card-title">Pack of Three T-Shirts</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast15.jpg" alt="Jacket">
+                <div class="card-body">
+                    <div class="card-category">Clothing</div>
+                    <div class="card-title">Winter Jacket</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast16.jpg" alt="Ajrak">
+                <div class="card-body">
+                    <div class="card-category">Accessories</div>
+                    <div class="card-title">Traditional Ajrak</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast17.jpg" alt="Eggs">
+                <div class="card-body">
+                    <div class="card-category">Groceries</div>
+                    <div class="card-title">Farm Fresh Eggs</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast20.jpg" alt="Jeans">
+                <div class="card-body">
+                    <div class="card-category">Clothing</div>
+                    <div class="card-title">Classic Jeans</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast21.jpg" alt="Dry Fruits">
+                <div class="card-body">
+                    <div class="card-category">Groceries</div>
+                    <div class="card-title">Dry Fruits</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast22.jpg" alt="Sauces">
+                <div class="card-body">
+                    <div class="card-category">Groceries</div>
+                    <div class="card-title">Sauces</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast23.jpg" alt="Candies">
+                <div class="card-body">
+                    <div class="card-category">Groceries</div>
+                    <div class="card-title">Candies</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card product-card">
+                <img class="card-img" src="fast24.jpg" alt="Biscuits">
+                <div class="card-body">
+                    <div class="card-category">Groceries</div>
+                    <div class="card-title">Biscuits</div>
+                    <a href="cart.html" class="btn btn-primary btn-sm">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo">QaumiQuotient</div>
+                <p>Your destination for quality clothing and products that celebrate identity and culture.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="categories.html">All Products</a></li>
+                    <li><a href="sellers.html">Top Sellers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="payment.html">Checkout</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="https://instagram.com/">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/fezan.rashid.7?mibextid=ZbWKwL">Abdul Saboor</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100087488514587&mibextid=ZbWKwL">Gotam</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 QaumiQuotient. All rights reserved.</div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/8d7de18ad4.js" crossorigin="anonymous"></script>
 </body>
 </html>
